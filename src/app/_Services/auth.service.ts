@@ -13,4 +13,9 @@ export class AuthService {
     //httppost method needs to add to fetch the token from API
     return localStorage.setItem('token',"Swaroop")
   }
+
+  register(model:any)
+  {
+    return "abc";
+  }
 }
