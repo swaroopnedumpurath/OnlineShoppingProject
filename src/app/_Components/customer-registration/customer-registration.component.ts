@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
+import { AuthService } from 'src/app/_Services/auth.service';
 // import { EventEmitter } from 'protractor';
 
 
@@ -10,15 +11,20 @@ import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
 export class CustomerRegistrationComponent implements OnInit {
 
   @Input () valuesFromHome:any;
-  @Output() cancelRegister=new EventEmitter();
-  model:any={};
-  constructor() { }
+  @Output() cancelRegister = new EventEmitter();
+  model: any = {};
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
 
   register(){
-    console.log(this.model);
+    // console.log(this.model);
+    this.authService.register(this.model).subscribe(() => {
+      console.log('Reistration successful');
+    }, error => {
+      console.log(error)
+    });
   }
 
   cancel(){

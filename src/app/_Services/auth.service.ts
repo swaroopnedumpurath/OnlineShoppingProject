@@ -1,21 +1,31 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  baseurl = 'http://localhost:5000/api/auth/';
   constructor(private http:HttpClient) { }
 
-  login(model:any)
-  {
-    //httppost method needs to add to fetch the token from API
-    return localStorage.setItem('token',"Swaroop")
+  login(model: any)
+  {    
+    // return localStorage.setItem('token',"Swaroop")
+    return this.http.post(this.baseurl + 'login', model).pipe(
+        map((response: any) => {
+          const user = response;
+          if (user) {
+            localStorage.setItem('token',user.token);
+          }
+        })
+      );
   }
 
-  register(model:any)
+  register(model: any)
   {
-    return "abc";
+    //return "abc";
+    return this.http.post(this.baseurl + 'register', model);
   }
 }

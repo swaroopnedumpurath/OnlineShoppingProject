@@ -1,6 +1,28 @@
 <form #registerForm="ngForm" (ngSubmit)="register()">
     <h2 class="text-center text-primary">Sign Up</h2>
-    <hr>
+ 
+    <div class="form-group">
+        <input type="text" class="form-control" required name="firstname" [(ngModel)]="model.firstname" 
+        placeholder="First Name">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" required name="lastname" [(ngModel)]="model.lastname" 
+        placeholder="Last Name">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" required name="email" [(ngModel)]="model.email" 
+        placeholder="Email">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" required name="phoneno" [(ngModel)]="model.phoneno" 
+        placeholder="PhoneNo">
+    </div>
+    <div class="form-group">       
+        <select class="form-control"  required name="gender"  [(ngModel)]="model.gender" >          
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+   </div>
     <div class="form-group">
         <input type="text" class="form-control" required name="username" [(ngModel)]="model.username" 
         placeholder="UserName">
@@ -9,6 +31,12 @@
         <input type="password" class="form-control"required name="password" [(ngModel)]="model.password" 
         placeholder="Password">
     </div>
+    <div class="form-group">       
+        <select class="form-control"  required name="country"  [(ngModel)]="model.country" >          
+          <option value="India">India</option>
+          <option value="US">US</option>
+        </select>
+   </div>
     <div class="form-group text-center">
         <button class="btn btn-success mr-2" type="submit">Register</button>
         <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>

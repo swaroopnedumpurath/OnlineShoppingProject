@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/_Services/auth.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  model:any={};
+  model: any = {};
 
   constructor(private authService:AuthService) { }
 
@@ -15,12 +15,12 @@ export class NavComponent implements OnInit {
   }
 
   login(){
-    // this.authService.login(this.model).subscribe(next=>{
-    //   console.log('Logged in succesfully');
-    // }, error=>{
-    //   console.log('Falied to login');    
-    // });
-    this.authService.login(this.model);  
+    this.authService.login(this.model).subscribe(next => {
+      console.log('Logged in succesfully');
+    }, error => {
+      console.log('Falied to login');    
+    });
+    // this.authService.login(this.model);  
     console.log('Logged in succesfully');
   }
   loggedIn(){
